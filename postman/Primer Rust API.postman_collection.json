@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "73b7394c-623a-4e85-bb01-281a14f542f1",
+		"name": "Primer Rust API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38177944"
+	},
+	"item": [
+		{
+			"name": "Get Secret Prime",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/secret_prime",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"secret_prime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Secret Prime",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"secretprime\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/secret_prime",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"secret_prime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get is it prime",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"prime\": 12341\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/is_it_prime",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"is_it_prime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"prime\": 12341\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/is_it_prime",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"is_it_prime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hello (root)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"prime\": 12341\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/is_it_prime",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"is_it_prime"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
