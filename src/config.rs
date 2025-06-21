@@ -1,5 +1,3 @@
-use dotenv;
-use envy;
 use log::{error, info};
 use serde::Deserialize;
 
@@ -17,14 +15,14 @@ pub fn load_env_variables() -> Result<Config, envy::Error> {
     match envy::from_env::<Config>() {
         Ok(config_values) => {
             info!("Sucessfully read config values from env");
-            return Ok(config_values);
+            Ok(config_values)
         }
         Err(error) => {
             error!(
                 "Could not sucessfully read value from the environment variables\n\
                 Program will now terminate..."
             );
-            return Err(error);
+            Err(error)
         }
     }
 }

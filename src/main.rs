@@ -1,6 +1,5 @@
 use log::Level;
-use log::{debug, info, warn};
-use tokio;
+use log::{debug, info};
 
 mod config;
 mod errors;
@@ -19,10 +18,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Overwrite logger if variable is provided in env
     if let Some(log_level) = &configuration.rust_log {
-        warn!("Overwriting logger with level {}", log_level);
+        println!("Overwriting logger with level `{}`", log_level);
         simple_logger::init_with_env().unwrap();
     } else {
-        warn!("Setting logger with Info level");
+        println!("Setting logger with Info level");
         simple_logger::init_with_level(Level::Info).unwrap();
     }
 

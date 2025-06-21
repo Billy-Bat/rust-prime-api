@@ -10,9 +10,9 @@ pub struct AppState {
 
 impl Default for AppState {
     fn default() -> Self {
-        return AppState {
+        AppState {
             prime_requested: Arc::new(Mutex::new(8)),
-        };
+        }
     }
 }
 
