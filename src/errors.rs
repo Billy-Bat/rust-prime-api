@@ -5,8 +5,9 @@ use axum::{
 use std::fmt;
 
 pub enum APIError {
-    Locked(RessourceLockedError),
+    Locked(ResourceLockedError),
     NotPrime(NotPrimeError),
+    PrimeTooLarge(PrimeTooLargeError),
 }
 
 impl fmt::Display for APIError {
@@ -14,6 +15,7 @@ impl fmt::Display for APIError {
         match self {
             APIError::Locked(err) => err.fmt(f),
             APIError::NotPrime(err) => err.fmt(f),
+            APIError::PrimeTooLarge(err) => err.fmt(f),
         }
     }
 }
@@ -23,16 +25,17 @@ impl IntoResponse for APIError {
         match self {
             APIError::Locked(err) => err.into_response(),
             APIError::NotPrime(err) => err.into_response(),
+            APIError::PrimeTooLarge(err) => err.into_response(),
         }
     }
 }
 
 #[derive(Debug)]
-pub struct RessourceLockedError;
+pub struct ResourceLockedError;
 
-impl std::error::Error for RessourceLockedError {}
+impl std::error::Error for ResourceLockedError {}
 
-impl fmt::Display for RessourceLockedError {
+impl fmt::Display for ResourceLockedError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(
             f,
@@ -42,14 +45,14 @@ impl fmt::Display for RessourceLockedError {
     }
 }
 
-impl IntoResponse for RessourceLockedError {
+impl IntoResponse for ResourceLockedError {
     fn into_response(self) -> Response {
         (StatusCode::LOCKED, self.to_string()).into_response()
     }
 }
 
 #[derive(Debug)]
-pub struct NotPrimeError(pub u32);
+pub struct NotPrimeError(pub i32);
 
 impl std::error::Error for NotPrimeError {}
 
@@ -60,6 +63,23 @@ impl fmt::Display for NotPrimeError {
 }
 
 impl IntoResponse for NotPrimeError {
+    fn into_response(self) -> Response {
+        (StatusCode::BAD_REQUEST, self.to_string()).into_response()
+    }
+}
+
+#[derive(Debug)]
+pub struct PrimeTooLargeError(pub i32);
+
+impl std::error::Error for PrimeTooLargeError {}
+
+impl fmt::Display for PrimeTooLargeError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "The prime requested may be too large, lower your expectations, {} is probably too much", self.0)
+    }
+}
+
+impl IntoResponse for PrimeTooLargeError {
     fn into_response(self) -> Response {
         (StatusCode::BAD_REQUEST, self.to_string()).into_response()
     }

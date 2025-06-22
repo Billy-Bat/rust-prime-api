@@ -31,7 +31,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"secretprime\": 3\n}",
+					"raw": "{\n    \"secretprime\": 263\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -69,13 +69,19 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/is_it_prime",
+					"raw": "localhost:8080/is_it_prime?prime=97",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"is_it_prime"
+					],
+					"query": [
+						{
+							"key": "prime",
+							"value": "97"
+						}
 					]
 				}
 			},
@@ -99,13 +105,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/is_it_prime",
+					"raw": "localhost:8080/health",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"is_it_prime"
+						"health"
 					]
 				}
 			},
@@ -129,13 +135,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/is_it_prime",
+					"raw": "localhost:8080/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"is_it_prime"
+						""
 					]
 				}
 			},

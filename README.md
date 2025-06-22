@@ -7,7 +7,7 @@ Just a playground [**Axum**](https://github.com/tokio-rs/axum) REST API that has
 
 ## Environment Variables
 
-For _local_ developements, you are required to provide the environment variables in the `.env` file.
+For _local_ developments, you are required to provide the environment variables in the `.env` file.
 
 Refer to the [`.env.template`](./.env.template) file
 

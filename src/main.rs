@@ -4,6 +4,7 @@ use log::{debug, info};
 mod config;
 mod errors;
 mod handlers;
+mod models;
 mod prime;
 mod routes;
 mod state;
@@ -27,6 +28,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     debug!("Defining routes");
     let routes = initialize_routes(configuration);
+
+    debug!("Initialize openapi swagger");
 
     info!("Starting Server");
     let listener = tokio::net::TcpListener::bind("127.0.0.1:8080")
